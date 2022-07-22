@@ -4,7 +4,7 @@
 
         <div class="row">
             <div class="col-xs-12">
-                <div class="box box-warning box-solid">
+                <div class="box box-primary box-solid">
 
                     <div class="box-header">
                         <h3 class="box-title">SETTING TAMPILAN MENU</h3>
@@ -29,7 +29,7 @@
 
         <div class="row">
             <div class="col-xs-12">
-                <div class="box box-warning box-solid">
+                <div class="box box-primary box-solid">
 
                     <div class="box-header">
                         <h3 class="box-title">KELOLA DATA MENU</h3>

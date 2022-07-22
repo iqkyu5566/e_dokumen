@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Garuda CRUD Generator</title>
+        <title>E-doc PT SULTRA</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
@@ -27,10 +27,12 @@
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </head>
+
+    <body class="img js-fullweight" style="background-image: url(<?php echo base_url(); ?>/assets/login/bg.jpg); height: 800px;">
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="<?php echo base_url(); ?>/adminlte/index2.html"><b>Garuda CRUD</b> Generator</a>
+                <a href="<?php echo base_url(); ?>/adminlte/index2.html"><b>E-DOC</b> PT SULTRA</a>
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">
@@ -55,33 +57,15 @@
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-danger btn-block btn-flat"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>
-                    </div>
-                    <div class="col-xs-6">
-                        <?php echo anchor('#', '<i class="fa fa-eye-slash" aria-hidden="true"></i> Lupa Password', array('class' => 'btn btn-primary btn-block btn-flat')); ?>
-                    </div>
-                </div>
-                <!-- /.col -->
-
-
-                <!-- /.col -->
-                <div class="row" style="margin-top: 20px;">
                     <div class="col-xs-12">
-                        <div class="callout callout-info">
-                            <h4>Level Super Admin</h4>
-
-                            <p><b>Email</b> : nuris.akbar@gmail.com</p>
-                            <p><b>Password</b> : password</p>
-                            <hr>
-                            <h4>Level Admin</h4>
-
-                            <p><b>Email</b> : hafid@gmail.com</p>
-                            <p><b>Password</b> : password</p>
-                        </div>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>
                     </div>
-
+                  
                 </div>
+                <!-- /.col -->
+
+
+             
                 </form>
 
 

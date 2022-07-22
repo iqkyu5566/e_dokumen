@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>GARUDA CRUD Generator</title>
+        <title>E-Documentasi</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
@@ -38,13 +38,16 @@
 
             <header class="main-header">
                 <!-- Logo -->
+                
                 <a href="<?php echo base_url() ?>adminlte/index2.html" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>A</b>LT</span>
+                    
+                    <span class="logo-mini"><b>E</b>DOC</span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>BROCODE</b>LTE</span>
+                    <span class="logo-lg"><b>E-Documentasi</b></span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
+                
                 <nav class="navbar navbar-static-top">
                     <!-- Sidebar toggle button-->
                     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -55,7 +58,8 @@
                     </a>
 
                     <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">                          
+                        <ul class="nav navbar-nav">  
+                                              
 
 
                             <!-- User Account: style can be found in dropdown.less -->
@@ -109,10 +113,9 @@
             <!-- /.content-wrapper -->
             <footer class="main-footer">
                 <div class="pull-right hidden-xs">
-                    <b>Version</b> 2.4.0
+                    <b>Version</b> 1.0.0
                 </div>
-                <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-                reserved.
+                <strong>Copyright &copy; 2022 <a href="https://www.youtube.com/channel/UCJ9_X9HevQ00Z_i62yNsBmg">TIM IT</a>.</strong> Pengadilan Tinggi Sulawesi Tenggara.
             </footer>
 
             <!-- Control Sidebar -->
