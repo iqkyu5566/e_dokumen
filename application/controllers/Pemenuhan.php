@@ -66,6 +66,13 @@ class Pemenuhan extends CI_Controller
 
     public function create() 
     {
+        
+        // echo "<pre>";
+        // print_r ($_SESSION);
+        // die;
+        // echo "</pre>";
+        
+
         $data = array(
             'button' => 'Create',
             'action' => site_url('pemenuhan/create_action'),
@@ -90,7 +97,7 @@ class Pemenuhan extends CI_Controller
 		'no_dokumen' => $this->input->post('no_dokumen',TRUE),
 		'judul' => $this->input->post('judul',TRUE),
 		'tgl_upload' => $this->input->post('tgl_upload',TRUE),
-		'id_kategori' => $this->input->post('id_kategori',TRUE),
+		'id_kategori' => $this->session->userdata('area'),
 		'nama_file' => $this->input->post('nama_file',TRUE),
 	    );
 

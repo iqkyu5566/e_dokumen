@@ -54,6 +54,7 @@ class User extends CI_Controller
 	    'email'         => set_value('email'),
 	    'password'      => set_value('password'),
 	    'images'        => set_value('images'),
+	    'area'          => set_value('area'),
 	    'id_user_level' => set_value('id_user_level'),
 	    'is_aktif'      => set_value('is_aktif'),
 	);
@@ -78,6 +79,7 @@ class User extends CI_Controller
 		'password'      => $hashPassword,
 		'images'        => $foto['file_name'],
 		'id_user_level' => $this->input->post('id_user_level',TRUE),
+		'area'          => $this->input->post('area',TRUE),
 		'is_aktif'      => $this->input->post('is_aktif',TRUE),
 	    );
 

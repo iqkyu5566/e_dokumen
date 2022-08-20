@@ -27,6 +27,19 @@
                     <tr><td width='200'>Level User <?php echo form_error('id_user_level') ?></td><td>
                             <?php echo cmb_dinamis('id_user_level', 'tbl_user_level', 'nama_level', 'id_user_level', $id_user_level,'DESC') ?>
                             <!--<input type="text" class="form-control" name="id_user_level" id="id_user_level" placeholder="Id User Level" value="<?php echo $id_user_level; ?>" />--></td></tr>
+
+                    <tr><td width='200'>Level User <?php echo form_error('id_user_level') ?></td><td>
+                    <select class="custom-select form-control form-control-border" name="area" id="exampleSelectBorder">
+                        <option value="Area 1">Area 1</option>
+                        <option value="Area 2">Area 2</option>
+                        <option value="Area 3">Area 3</option>
+                        <option value="Area 4">Area 4</option>
+                        <option value="Area 5">Area 5</option>
+                        <option value="Area 6">Area 6</option>
+                       
+                    </select>
+                    <!--<input type="text" class="form-control" name="id_user_level" id="id_user_level" placeholder="Id User Level" value="<?php echo $id_user_level; ?>" />--></td></tr>
+
                     <tr><td width='200'>Status Aktif <?php echo form_error('is_aktif') ?></td><td>
                             <?php echo form_dropdown('is_aktif', array('y' => 'AKTIF', 'n' => 'TIDAK AKTIF'), $is_aktif, array('class' => 'form-control')); ?>
                             <!--<input type="text" class="form-control" name="is_aktif" id="is_aktif" placeholder="Is Aktif" value="<?php echo $is_aktif; ?>" />--></td></tr>
