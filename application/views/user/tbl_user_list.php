@@ -20,6 +20,7 @@
 		    <th>Full Name</th>
 		    <th>Email</th>
 		    <th>Nama Level</th>
+		    <th>Area</th>
 		    <th>Status</th>
 		    <th width="200px">Action</th>
                 </tr>
@@ -71,7 +72,7 @@
                         {
                             "data": "id_users",
                             "orderable": false
-                        },{"data": "full_name"},{"data": "email"},{"data": "nama_level"},{"data": "is_aktif"},
+                        },{"data": "full_name"},{"data": "email"},{"data": "nama_level"},{"data": "area"},{"data": "is_aktif"},
                         {
                             "data" : "action",
                             "orderable": false,

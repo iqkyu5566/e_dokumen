@@ -22,13 +22,24 @@
 						<td><input type="date" class="form-control" name="tgl_upload" id="tgl_upload" placeholder="Tgl Upload" value="<?php echo $tgl_upload; ?>" /></td>
 					</tr>
 	
-					<tr>
-						<td width='200'>Id Kategori <?php echo form_error('id_kategori') ?></td><td><input type="text" class="form-control" name="id_kategori" id="id_kategori" placeholder="Id Kategori" value="<?php echo $id_kategori; ?>" /></td>
-					</tr>
+					
 	    
 					<tr>
-						<td width='200'>Nama File <?php echo form_error('nama_file') ?></td>
-						<td> <textarea class="form-control" rows="3" name="nama_file" id="nama_file" placeholder="Nama File"><?php echo $nama_file; ?></textarea></td>
+						<!-- <td width='200'>Nama File <?php echo form_error('nama_file') ?></td>
+						<td> <textarea class="form-control" rows="3" name="nama_file" id="nama_file" placeholder="Nama File"><?php echo $nama_file; ?></textarea></td> -->
+						<td width='200'>
+						<div class="form-group">
+						<label for="exampleInputFile">Nama File</label>
+						</td>
+						<td>
+						<div class="input-group">
+						<div class="custom-file">
+						<input type="file" class="custom-file-input" id="exampleInputFile">
+						</div>
+						
+						</div>
+						</div>
+						</td>
 					</tr>
 	
 					<tr>
