@@ -25,11 +25,25 @@
 					<tr>
 						<td width='200'>Id Kategori <?php echo form_error('id_kategori') ?></td><td><input type="text" class="form-control" name="id_kategori" id="id_kategori" placeholder="Id Kategori" value="<?php echo $id_kategori; ?>" /></td>
 					</tr>
-	    
-					<tr>
+					<td width ='200'>
+					<div class="form-group">
+					<label for="exampleInputFile">File input</label>
+					<div class="input-group">
+					<div class="custom-file">
+					<input type="file" class="custom-file-input" id="exampleInputFile">
+					<label class="custom-file-label" for="exampleInputFile">Choose file</label>
+					</div>
+					<div class="input-group-append">
+					<span class="input-group-text">Upload</span>
+					</div>
+					</div>
+					</div>
+					</td>
+
+					 <!-- <tr>
 						<td width='200'>Nama File <?php echo form_error('nama_file') ?></td>
 						<td> <textarea class="form-control" rows="3" name="nama_file" id="nama_file" placeholder="Nama File"><?php echo $nama_file; ?></textarea></td>
-					</tr>
+					</tr> -->
 	
 					<tr>
 						<td></td>
