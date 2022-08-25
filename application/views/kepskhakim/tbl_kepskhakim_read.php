@@ -29,6 +29,11 @@
 				<td>Keterangan</td>
 				<td><?php echo $keterangan; ?></td>
 			</tr>
+			
+			<tr>
+				<td>Nama File</td>
+				<td><?php echo $nama_file; ?></td>
+			</tr>
 	
 			<tr>
 				<td></td>

@@ -24,6 +24,7 @@
 		<th>Tanggal Sk</th>
 		<th>Perihal</th>
 		<th>Keterangan</th>
+        <th>Nama File</th>
 		
             </tr><?php
             foreach ($kepskhakim_data as $kepskhakim)
@@ -34,7 +35,8 @@
 		      <td><?php echo $kepskhakim->nomor_sk ?></td>
 		      <td><?php echo $kepskhakim->tanggal_sk ?></td>
 		      <td><?php echo $kepskhakim->perihal ?></td>
-		      <td><?php echo $kepskhakim->keterangan ?></td>	
+		      <td><?php echo $kepskhakim->keterangan ?></td>
+              <td><?php echo $kepskhakim->nama_file ?></td>	
                 </tr>
                 <?php
             }

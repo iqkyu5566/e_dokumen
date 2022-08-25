@@ -55,6 +55,7 @@ class Kepskhakim extends CI_Controller
 		'tanggal_sk' => $row->tanggal_sk,
 		'perihal' => $row->perihal,
 		'keterangan' => $row->keterangan,
+        'nama_file' => $row->nama_file,
 	    );
             $this->template->load('template','kepskhakim/tbl_kepskhakim_read', $data);
         } else {
@@ -73,6 +74,7 @@ class Kepskhakim extends CI_Controller
 	    'tanggal_sk' => set_value('tanggal_sk'),
 	    'perihal' => set_value('perihal'),
 	    'keterangan' => set_value('keterangan'),
+        'nama_file' => set_value('nama_file'),
 	);
         $this->template->load('template','kepskhakim/tbl_kepskhakim_form', $data);
     }
@@ -89,6 +91,7 @@ class Kepskhakim extends CI_Controller
 		'tanggal_sk' => $this->input->post('tanggal_sk',TRUE),
 		'perihal' => $this->input->post('perihal',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
+        'nama_file' => $this->input->post('nama_file',TRUE),
 	    );
 
             $this->Kepskhakim_model->insert($data);
@@ -110,6 +113,7 @@ class Kepskhakim extends CI_Controller
 		'tanggal_sk' => set_value('tanggal_sk', $row->tanggal_sk),
 		'perihal' => set_value('perihal', $row->perihal),
 		'keterangan' => set_value('keterangan', $row->keterangan),
+        'nama_file' => set_value('nama_file', $row->nama_file),
 	    );
             $this->template->load('template','kepskhakim/tbl_kepskhakim_form', $data);
         } else {
@@ -130,6 +134,7 @@ class Kepskhakim extends CI_Controller
 		'tanggal_sk' => $this->input->post('tanggal_sk',TRUE),
 		'perihal' => $this->input->post('perihal',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
+        'nama_file' => $this->input->post('nama_file',TRUE),
 	    );
 
             $this->Kepskhakim_model->update($this->input->post('id_skketua', TRUE), $data);
@@ -158,6 +163,7 @@ class Kepskhakim extends CI_Controller
 	$this->form_validation->set_rules('tanggal_sk', 'tanggal sk', 'trim|required');
 	$this->form_validation->set_rules('perihal', 'perihal', 'trim|required');
 	$this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
+    $this->form_validation->set_rules('nama_file', 'nama file', 'trim|required');
 
 	$this->form_validation->set_rules('id_skketua', 'id_skketua', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
@@ -189,6 +195,7 @@ class Kepskhakim extends CI_Controller
 	xlsWriteLabel($tablehead, $kolomhead++, "Tanggal Sk");
 	xlsWriteLabel($tablehead, $kolomhead++, "Perihal");
 	xlsWriteLabel($tablehead, $kolomhead++, "Keterangan");
+    xlsWriteLabel($tablehead, $kolomhead++, "Nama File");
 
 	foreach ($this->Kepskhakim_model->get_all() as $data) {
             $kolombody = 0;
@@ -199,6 +206,7 @@ class Kepskhakim extends CI_Controller
 	    xlsWriteLabel($tablebody, $kolombody++, $data->tanggal_sk);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->perihal);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->keterangan);
+        xlsWriteLabel($tablebody, $kolombody++, $data->nama_file);
 
 	    $tablebody++;
             $nourut++;

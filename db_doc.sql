@@ -12,9 +12,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Dumping database structure for db_doc
-CREATE DATABASE IF NOT EXISTS `db_doc` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `db_doc`;
+
 
 -- Dumping structure for table db_doc.id_skhakim
 CREATE TABLE IF NOT EXISTS `id_skhakim` (

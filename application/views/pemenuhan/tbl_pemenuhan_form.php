@@ -29,12 +29,12 @@
 						<td> <textarea class="form-control" rows="3" name="nama_file" id="nama_file" placeholder="Nama File"><?php echo $nama_file; ?></textarea></td> -->
 						<td width='200'>
 						<div class="form-group">
-						<label for="exampleInputFile">Nama File</label>
+						<label for="nama_file">Nama File</label>
 						</td>
 						<td>
 						<div class="input-group">
 						<div class="custom-file">
-						<input type="file" class="custom-file-input" id="exampleInputFile">
+						<input type="file" class="custom-file-input" id="nama_file" name="nama_file">
 						</div>
 						
 						</div>

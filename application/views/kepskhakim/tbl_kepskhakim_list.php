@@ -56,6 +56,7 @@
 		<th>Tanggal Sk</th>
 		<th>Perihal</th>
 		<th>Keterangan</th>
+        <th>Nama File</th>
 		<th>Action</th>
             </tr><?php
             foreach ($kepskhakim_data as $kepskhakim)
@@ -67,6 +68,7 @@
 			<td><?php echo $kepskhakim->tanggal_sk ?></td>
 			<td><?php echo $kepskhakim->perihal ?></td>
 			<td><?php echo $kepskhakim->keterangan ?></td>
+            <td><?php echo $kepskhakim->nama_file ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('kepskhakim/read/'.$kepskhakim->id_skketua),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
