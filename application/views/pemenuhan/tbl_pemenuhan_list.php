@@ -69,6 +69,7 @@
 			<td><?php echo $pemenuhan->tgl_upload ?></td>
 			<td><?php echo $pemenuhan->id_kategori ?></td>
 			<td><?php echo $pemenuhan->nama_file ?></td>
+            <td><?php echo anchor(site_url('assets/file_zipemenuhan/'.$pemenuhan->nama_file),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm", target="_blank"');  ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('pemenuhan/read/'.$pemenuhan->id_pemenuhan),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 

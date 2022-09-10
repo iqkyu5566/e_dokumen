@@ -78,11 +78,20 @@ class Kepskhakim extends CI_Controller
 	);
         $this->template->load('template','kepskhakim/tbl_kepskhakim_form', $data);
     }
+
+    
     
     public function create_action() 
     {
+        
+        
+        
         $this->_rules();
-
+        $kepskhakim = $this->upload_fileskhakim();
+        // echo "<pre>";
+        // print_r ($kepskhakim);
+        // die;
+        // echo "</pre>";
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
@@ -91,7 +100,8 @@ class Kepskhakim extends CI_Controller
 		'tanggal_sk' => $this->input->post('tanggal_sk',TRUE),
 		'perihal' => $this->input->post('perihal',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
-        'nama_file' => $this->input->post('nama_file',TRUE),
+        'nama_file'     => $kepskhakim['file_name'],
+        // 'nama_file' => $this->input->post('nama_file',TRUE),
 	    );
 
             $this->Kepskhakim_model->insert($data);
@@ -125,6 +135,7 @@ class Kepskhakim extends CI_Controller
     public function update_action() 
     {
         $this->_rules();
+        $kepskhakim = $this->upload_fileskhakim();
 
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_skketua', TRUE));
@@ -134,7 +145,8 @@ class Kepskhakim extends CI_Controller
 		'tanggal_sk' => $this->input->post('tanggal_sk',TRUE),
 		'perihal' => $this->input->post('perihal',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
-        'nama_file' => $this->input->post('nama_file',TRUE),
+        // 'nama_file' => $this->input->post('nama_file',TRUE),
+        'nama_file'     => $kepskhakim['file_name'],
 	    );
 
             $this->Kepskhakim_model->update($this->input->post('id_skketua', TRUE), $data);
@@ -163,7 +175,7 @@ class Kepskhakim extends CI_Controller
 	$this->form_validation->set_rules('tanggal_sk', 'tanggal sk', 'trim|required');
 	$this->form_validation->set_rules('perihal', 'perihal', 'trim|required');
 	$this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
-    $this->form_validation->set_rules('nama_file', 'nama file', 'trim|required');
+    // $this->form_validation->set_rules('nama_file', 'nama file', 'trim|required');
 
 	$this->form_validation->set_rules('id_skketua', 'id_skketua', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
@@ -229,7 +241,20 @@ class Kepskhakim extends CI_Controller
         $this->load->view('kepskhakim/tbl_kepskhakim_doc',$data);
     }
 
+    function upload_fileskhakim(){
+        $config['upload_path']          = './assets/file_skhakim';
+        $config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx|zip|rar';
+        $config['max_size']             = 2000;
+        //$config['max_width']            = 1024;
+        //$config['max_height']           = 768;
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('nama_file');
+        return $this->upload->data();
+    }
+
 }
+
+
 
 /* End of file Kepskhakim.php */
 /* Location: ./application/controllers/Kepskhakim.php */

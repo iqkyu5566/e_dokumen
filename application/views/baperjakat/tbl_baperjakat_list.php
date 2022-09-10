@@ -73,6 +73,7 @@
 			<td><?php echo $baperjakat->jab_lama ?></td>
 			<td><?php echo $baperjakat->jab_baru ?></td>
 			<td><?php echo $baperjakat->keterangan ?></td>
+            <td><?php echo anchor(site_url('assets/file_baperjakat/'.$baperjakat->nama_file),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm", target="_blank"');  ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('baperjakat/read/'.$baperjakat->id_baperjakat),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 

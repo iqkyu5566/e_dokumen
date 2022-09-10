@@ -69,6 +69,7 @@
 			<td><?php echo $zibirokrasi->tgl_upload ?></td>
 			<td><?php echo $zibirokrasi->id_kategori ?></td>
 			<td><?php echo $zibirokrasi->nama_file ?></td>
+            <td><?php echo anchor(site_url('assets/file_zibirokrasi/'.$zibirokrasi->nama_file),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm", target="_blank"');  ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('zibirokrasi/read/'.$zibirokrasi->id_zibirokrasi),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 

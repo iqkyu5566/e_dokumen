@@ -57,6 +57,7 @@ class Cuti extends CI_Controller
 		'jenis_cuti' => $row->jenis_cuti,
 		'lama_cuti' => $row->lama_cuti,
 		'tgl_cuti' => $row->tgl_cuti,
+        'nama_file' => $row->nama_file,
 		'keterangan' => $row->keterangan,
 	    );
             $this->template->load('template','cuti/tbl_cuti_read', $data);
@@ -78,6 +79,7 @@ class Cuti extends CI_Controller
 	    'jenis_cuti' => set_value('jenis_cuti'),
 	    'lama_cuti' => set_value('lama_cuti'),
 	    'tgl_cuti' => set_value('tgl_cuti'),
+        'nama_file' => set_value('nama_file'),
 	    'keterangan' => set_value('keterangan'),
 	);
         $this->template->load('template','cuti/tbl_cuti_form', $data);
@@ -86,7 +88,7 @@ class Cuti extends CI_Controller
     public function create_action() 
     {
         $this->_rules();
-
+        $cuti = $this->upload_filecuti();
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
@@ -97,6 +99,7 @@ class Cuti extends CI_Controller
 		'jenis_cuti' => $this->input->post('jenis_cuti',TRUE),
 		'lama_cuti' => $this->input->post('lama_cuti',TRUE),
 		'tgl_cuti' => $this->input->post('tgl_cuti',TRUE),
+        'nama_file'     => $cuti['file_name'],
 		'keterangan' => $this->input->post('keterangan',TRUE),
 	    );
 
@@ -121,6 +124,7 @@ class Cuti extends CI_Controller
 		'jenis_cuti' => set_value('jenis_cuti', $row->jenis_cuti),
 		'lama_cuti' => set_value('lama_cuti', $row->lama_cuti),
 		'tgl_cuti' => set_value('tgl_cuti', $row->tgl_cuti),
+        'nama_file' => set_value('nama_file', $row->nama_file),
 		'keterangan' => set_value('keterangan', $row->keterangan),
 	    );
             $this->template->load('template','cuti/tbl_cuti_form', $data);
@@ -133,7 +137,7 @@ class Cuti extends CI_Controller
     public function update_action() 
     {
         $this->_rules();
-
+        $cuti = $this->upload_filecuti();
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_cuti', TRUE));
         } else {
@@ -144,6 +148,7 @@ class Cuti extends CI_Controller
 		'jenis_cuti' => $this->input->post('jenis_cuti',TRUE),
 		'lama_cuti' => $this->input->post('lama_cuti',TRUE),
 		'tgl_cuti' => $this->input->post('tgl_cuti',TRUE),
+        'nama_file'     => $cuti['file_name'],
 		'keterangan' => $this->input->post('keterangan',TRUE),
 	    );
 
@@ -175,6 +180,7 @@ class Cuti extends CI_Controller
 	$this->form_validation->set_rules('jenis_cuti', 'jenis cuti', 'trim|required');
 	$this->form_validation->set_rules('lama_cuti', 'lama cuti', 'trim|required');
 	$this->form_validation->set_rules('tgl_cuti', 'tgl cuti', 'trim|required');
+    // $this->form_validation->set_rules('nama_file', 'nama file', 'trim|required');
 	$this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
 
 	$this->form_validation->set_rules('id_cuti', 'id_cuti', 'trim');
@@ -209,6 +215,7 @@ class Cuti extends CI_Controller
 	xlsWriteLabel($tablehead, $kolomhead++, "Jenis Cuti");
 	xlsWriteLabel($tablehead, $kolomhead++, "Lama Cuti");
 	xlsWriteLabel($tablehead, $kolomhead++, "Tgl Cuti");
+    xlsWriteLabel($tablehead, $kolomhead++, "Nama File");
 	xlsWriteLabel($tablehead, $kolomhead++, "Keterangan");
 
 	foreach ($this->Cuti_model->get_all() as $data) {
@@ -222,6 +229,7 @@ class Cuti extends CI_Controller
 	    xlsWriteLabel($tablebody, $kolombody++, $data->jenis_cuti);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->lama_cuti);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->tgl_cuti);
+        xlsWriteLabel($tablebody, $kolombody++, $data->nama_file);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->keterangan);
 
 	    $tablebody++;
@@ -243,6 +251,17 @@ class Cuti extends CI_Controller
         );
         
         $this->load->view('cuti/tbl_cuti_doc',$data);
+    }
+
+    function upload_filecuti(){
+        $config['upload_path']          = './assets/file_cuti';
+        $config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx|zip|rar';
+        $config['max_size']             = 2000;
+        //$config['max_width']            = 1024;
+        //$config['max_height']           = 768;
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('nama_file');
+        return $this->upload->data();
     }
 
 }

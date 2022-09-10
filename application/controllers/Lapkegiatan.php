@@ -54,6 +54,7 @@ class Lapkegiatan extends CI_Controller
 		'nama_kegiatan' => $row->nama_kegiatan,
 		'tgl_pelaksanaan' => $row->tgl_pelaksanaan,
 		'keterangan' => $row->keterangan,
+        'nama_file' => $row->nama_file,
 	    );
             $this->template->load('template','lapkegiatan/tbl_lapkegiatan_read', $data);
         } else {
@@ -78,6 +79,11 @@ class Lapkegiatan extends CI_Controller
     public function create_action() 
     {
         $this->_rules();
+        $laporankegiatan = $this->upload_filelapkegiatan();
+        // echo "<pre>";
+        // print_r ($kepskhakim);
+        // die;
+        // echo "</pre>";
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();
@@ -86,6 +92,7 @@ class Lapkegiatan extends CI_Controller
 		'nama_kegiatan' => $this->input->post('nama_kegiatan',TRUE),
 		'tgl_pelaksanaan' => $this->input->post('tgl_pelaksanaan',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
+        'nama_file'     => $laporankegiatan['file_name'],
 	    );
 
             $this->Lapkegiatan_model->insert($data);
@@ -117,6 +124,7 @@ class Lapkegiatan extends CI_Controller
     public function update_action() 
     {
         $this->_rules();
+        $laporankegiatan = $this->upload_filelapkegiatan();
 
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_lapkegiatan', TRUE));
@@ -125,6 +133,7 @@ class Lapkegiatan extends CI_Controller
 		'nama_kegiatan' => $this->input->post('nama_kegiatan',TRUE),
 		'tgl_pelaksanaan' => $this->input->post('tgl_pelaksanaan',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
+        'nama_file'     => $laporankegiatan['file_name'],
 	    );
 
             $this->Lapkegiatan_model->update($this->input->post('id_lapkegiatan', TRUE), $data);
@@ -211,6 +220,17 @@ class Lapkegiatan extends CI_Controller
         );
         
         $this->load->view('lapkegiatan/tbl_lapkegiatan_doc',$data);
+    }
+
+    function upload_filelapkegiatan(){
+        $config['upload_path']          = './assets/file_laporankegiatan';
+        $config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx|zip|rar';
+        $config['max_size']             = 2000;
+        //$config['max_width']            = 1024;
+        //$config['max_height']           = 768;
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('nama_file');
+        return $this->upload->data();
     }
 
 }

@@ -54,6 +54,7 @@ class Naikpangkat extends CI_Controller
 		'periode' => $row->periode,
 		'tahun' => $row->tahun,
 		'keterangan' => $row->keterangan,
+        'nama_file' => $row->nama_file,
 	    );
             $this->template->load('template','naikpangkat/tbl_naikpangkat_read', $data);
         } else {
@@ -78,6 +79,11 @@ class Naikpangkat extends CI_Controller
     public function create_action() 
     {
         $this->_rules();
+        $naikpangkat = $this->upload_filenaikpangkat();
+        // echo "<pre>";
+        // print_r ($kepskhakim);
+        // die;
+        // echo "</pre>";
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();
@@ -86,6 +92,7 @@ class Naikpangkat extends CI_Controller
 		'periode' => $this->input->post('periode',TRUE),
 		'tahun' => $this->input->post('tahun',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
+        'nama_file'     => $naikpangkat['file_name'],
 	    );
 
             $this->Naikpangkat_model->insert($data);
@@ -117,6 +124,7 @@ class Naikpangkat extends CI_Controller
     public function update_action() 
     {
         $this->_rules();
+        $naikpangkat = $this->upload_filenaikpangkat();
 
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_naikpangkat', TRUE));
@@ -125,6 +133,7 @@ class Naikpangkat extends CI_Controller
 		'periode' => $this->input->post('periode',TRUE),
 		'tahun' => $this->input->post('tahun',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
+        'nama_file'     => $naikpangkat['file_name'],
 	    );
 
             $this->Naikpangkat_model->update($this->input->post('id_naikpangkat', TRUE), $data);
@@ -213,6 +222,16 @@ class Naikpangkat extends CI_Controller
         $this->load->view('naikpangkat/tbl_naikpangkat_doc',$data);
     }
 
+    function upload_filenaikpangkat(){
+        $config['upload_path']          = './assets/file_naikpangkat';
+        $config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx|zip|rar';
+        $config['max_size']             = 2000;
+        //$config['max_width']            = 1024;
+        //$config['max_height']           = 768;
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('nama_file');
+        return $this->upload->data();
+    }
 }
 
 /* End of file Naikpangkat.php */

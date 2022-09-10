@@ -4,7 +4,7 @@
 			<div class="box-header with-border">
 				<h3 class="box-title"><?php echo strtoupper($button) ?> ZONA INTEGRITAS AREA I PEMENUHAN</h3>
 			</div>
-			<form action="<?php echo $action; ?>" method="post">
+			<form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
 			
 				<table class='table table-bordered'>
 	

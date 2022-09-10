@@ -69,6 +69,7 @@
 			<td><?php echo $zikualitaspelayanan->tgl_upload ?></td>
 			<td><?php echo $zikualitaspelayanan->id_kategori ?></td>
 			<td><?php echo $zikualitaspelayanan->nama_file ?></td>
+            <td><?php echo anchor(site_url('assets/file_zikualitaspelayanan/'.$zikualitaspelayanan->nama_file),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm", target="_blank"');  ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('zikualitaspelayanan/read/'.$zikualitaspelayanan->id_kualitaspelayanan),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 

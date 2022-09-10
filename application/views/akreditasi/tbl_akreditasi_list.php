@@ -69,6 +69,7 @@
 			<td><?php echo $akreditasi->tgl_upload ?></td>
 			<td><?php echo $akreditasi->id_kategori ?></td>
 			<td><?php echo $akreditasi->nama_file ?></td>
+            <td><?php echo anchor(site_url('assets/file_akreditasi/'.$akreditasi->nama_file),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm", target="_blank"');  ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('akreditasi/read/'.$akreditasi->id_akreditasi),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 

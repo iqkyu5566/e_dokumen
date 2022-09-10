@@ -82,6 +82,12 @@ class Zibirokrasi extends CI_Controller
     public function create_action() 
     {
         $this->_rules();
+        $zibirokrasi = $this->upload_filezibirokrasi();
+        // echo "<pre>";
+        // print_r ($kepskhakim);
+        // die;
+        // echo "</pre>";
+
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();
@@ -91,7 +97,8 @@ class Zibirokrasi extends CI_Controller
 		'judul' => $this->input->post('judul',TRUE),
 		'tgl_upload' => $this->input->post('tgl_upload',TRUE),
 		'id_kategori' => $this->input->post('id_kategori',TRUE),
-		'nama_file' => $this->input->post('nama_file',TRUE),
+		// 'nama_file' => $this->input->post('nama_file',TRUE),
+        'nama_file'     => $zibirokrasi['file_name'],
 	    );
 
             $this->Zibirokrasi_model->insert($data);
@@ -125,6 +132,7 @@ class Zibirokrasi extends CI_Controller
     public function update_action() 
     {
         $this->_rules();
+        $zibirokrasi = $this->upload_filezibirokrasi();
 
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_zibirokrasi', TRUE));
@@ -134,7 +142,8 @@ class Zibirokrasi extends CI_Controller
 		'judul' => $this->input->post('judul',TRUE),
 		'tgl_upload' => $this->input->post('tgl_upload',TRUE),
 		'id_kategori' => $this->input->post('id_kategori',TRUE),
-		'nama_file' => $this->input->post('nama_file',TRUE),
+		// 'nama_file' => $this->input->post('nama_file',TRUE),
+        'nama_file'     => $zibirokrasi['file_name'],
 	    );
 
             $this->Zibirokrasi_model->update($this->input->post('id_zibirokrasi', TRUE), $data);
@@ -163,7 +172,7 @@ class Zibirokrasi extends CI_Controller
 	$this->form_validation->set_rules('judul', 'judul', 'trim|required');
 	$this->form_validation->set_rules('tgl_upload', 'tgl upload', 'trim|required');
 	$this->form_validation->set_rules('id_kategori', 'id kategori', 'trim|required');
-	$this->form_validation->set_rules('nama_file', 'nama file', 'trim|required');
+	// $this->form_validation->set_rules('nama_file', 'nama file', 'trim|required');
 
 	$this->form_validation->set_rules('id_zibirokrasi', 'id_zibirokrasi', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
@@ -227,6 +236,17 @@ class Zibirokrasi extends CI_Controller
         );
         
         $this->load->view('zibirokrasi/tbl_zibirokrasi_doc',$data);
+    }
+
+    function upload_filezibirokrasi(){
+        $config['upload_path']          = './assets/file_zibirokrasi';
+        $config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx|zip|rar';
+        $config['max_size']             = 2000;
+        //$config['max_width']            = 1024;
+        //$config['max_height']           = 768;
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('nama_file');
+        return $this->upload->data();
     }
 
 }

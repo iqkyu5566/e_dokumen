@@ -31,9 +31,11 @@
 			</tr>
 	
 			<tr>
-				<td>Nama File</td>
-				<td><?php echo $nama_file; ?></td>
+			<td>Nama File</td>
+				<td><?php echo anchor(site_url('assets/file_zipemenuhan/'.$nama_file),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm", target="_blank"');  ?></td>
 			</tr>
+
+			
 	
 			<tr>
 				<td></td>

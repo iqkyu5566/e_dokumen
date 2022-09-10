@@ -65,6 +65,7 @@
 			<td><?php echo $lapkegiatan->nama_kegiatan ?></td>
 			<td><?php echo $lapkegiatan->tgl_pelaksanaan ?></td>
 			<td><?php echo $lapkegiatan->keterangan ?></td>
+            <td><?php echo anchor(site_url('assets/file_laporankegiatan/'.$lapkegiatan->nama_file),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm", target="_blank"');  ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('lapkegiatan/read/'.$lapkegiatan->id_lapkegiatan),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 

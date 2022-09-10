@@ -58,6 +58,7 @@ class Baperjakat extends CI_Controller
 		'jab_lama' => $row->jab_lama,
 		'jab_baru' => $row->jab_baru,
 		'keterangan' => $row->keterangan,
+        'nama_file' => $row->nama_file,
 	    );
             $this->template->load('template','baperjakat/tbl_baperjakat_read', $data);
         } else {
@@ -86,6 +87,11 @@ class Baperjakat extends CI_Controller
     public function create_action() 
     {
         $this->_rules();
+        $baperjakat = $this->upload_filebaperjakat();
+        // echo "<pre>";
+        // print_r ($kepskhakim);
+        // die;
+        // echo "</pre>";
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();
@@ -98,6 +104,7 @@ class Baperjakat extends CI_Controller
 		'jab_lama' => $this->input->post('jab_lama',TRUE),
 		'jab_baru' => $this->input->post('jab_baru',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
+        'nama_file'     => $baperjakat['file_name'],
 	    );
 
             $this->Baperjakat_model->insert($data);
@@ -133,6 +140,7 @@ class Baperjakat extends CI_Controller
     public function update_action() 
     {
         $this->_rules();
+        $baperjakat = $this->upload_filebaperjakat();
 
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_baperjakat', TRUE));
@@ -145,6 +153,7 @@ class Baperjakat extends CI_Controller
 		'jab_lama' => $this->input->post('jab_lama',TRUE),
 		'jab_baru' => $this->input->post('jab_baru',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
+        'nama_file'     => $baperjakat['file_name'],
 	    );
 
             $this->Baperjakat_model->update($this->input->post('id_baperjakat', TRUE), $data);
@@ -243,6 +252,16 @@ class Baperjakat extends CI_Controller
         );
         
         $this->load->view('baperjakat/tbl_baperjakat_doc',$data);
+    }
+    function upload_filebaperjakat(){
+        $config['upload_path']          = './assets/file_baperjakat';
+        $config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx|zip|rar';
+        $config['max_size']             = 2000;
+        //$config['max_width']            = 1024;
+        //$config['max_height']           = 768;
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('nama_file');
+        return $this->upload->data();
     }
 
 }

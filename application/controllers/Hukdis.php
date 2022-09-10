@@ -59,6 +59,7 @@ class Hukdis extends CI_Controller
 		'tmt_mulai' => $row->tmt_mulai,
 		'tmt_akhir' => $row->tmt_akhir,
 		'keterangan' => $row->keterangan,
+        'nama_file' => $row->nama_file,
 	    );
             $this->template->load('template','hukdis/tbl_hukdis_read', $data);
         } else {
@@ -88,6 +89,11 @@ class Hukdis extends CI_Controller
     public function create_action() 
     {
         $this->_rules();
+        $hukdis = $this->upload_filehukdis();
+        // echo "<pre>";
+        // print_r ($kepskhakim);
+        // die;
+        // echo "</pre>";
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();
@@ -101,6 +107,7 @@ class Hukdis extends CI_Controller
 		'tmt_mulai' => $this->input->post('tmt_mulai',TRUE),
 		'tmt_akhir' => $this->input->post('tmt_akhir',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
+        'nama_file'     => $hukdis['file_name'],
 	    );
 
             $this->Hukdis_model->insert($data);
@@ -137,6 +144,7 @@ class Hukdis extends CI_Controller
     public function update_action() 
     {
         $this->_rules();
+        $hukdis = $this->upload_filehukdis();
 
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_hukdis', TRUE));
@@ -150,6 +158,7 @@ class Hukdis extends CI_Controller
 		'tmt_mulai' => $this->input->post('tmt_mulai',TRUE),
 		'tmt_akhir' => $this->input->post('tmt_akhir',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
+        'nama_file'     => $hukdis['file_name'],
 	    );
 
             $this->Hukdis_model->update($this->input->post('id_hukdis', TRUE), $data);
@@ -251,6 +260,17 @@ class Hukdis extends CI_Controller
         );
         
         $this->load->view('hukdis/tbl_hukdis_doc',$data);
+    }
+
+    function upload_filehukdis(){
+        $config['upload_path']          = './assets/file_hukdis';
+        $config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx|zip|rar';
+        $config['max_size']             = 2000;
+        //$config['max_width']            = 1024;
+        //$config['max_height']           = 768;
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('nama_file');
+        return $this->upload->data();
     }
 
 }

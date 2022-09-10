@@ -59,6 +59,7 @@
 		<th>Lama Cuti</th>
 		<th>Tgl Cuti</th>
 		<th>Keterangan</th>
+        <th>Nama File</th>
 		<th>Action</th>
             </tr><?php
             foreach ($cuti_data as $cuti)
@@ -72,6 +73,7 @@
 			<td><?php echo $cuti->jenis_cuti ?></td>
 			<td><?php echo $cuti->lama_cuti ?></td>
 			<td><?php echo $cuti->tgl_cuti ?></td>
+            <td><?php echo anchor(site_url('assets/file_cuti/'.$cuti->nama_file),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm", target="_blank"'); ?></td>
 			<td><?php echo $cuti->keterangan ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 

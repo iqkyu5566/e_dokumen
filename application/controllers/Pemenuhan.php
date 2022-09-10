@@ -66,13 +66,7 @@ class Pemenuhan extends CI_Controller
 
     public function create() 
     {
-        
-        // echo "<pre>";
-        // print_r ($_SESSION);
-        // die;
-        // echo "</pre>";
-        
-
+              
         $data = array(
             'button' => 'Create',
             'action' => site_url('pemenuhan/create_action'),
@@ -89,6 +83,11 @@ class Pemenuhan extends CI_Controller
     public function create_action() 
     {
         $this->_rules();
+        $pemenuhan = $this->upload_pemenuhan();
+        // echo "<pre>";
+        // print_r ($zipemenuhan);
+        // die;
+        // echo "</pre>";
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();
@@ -98,7 +97,8 @@ class Pemenuhan extends CI_Controller
 		'judul' => $this->input->post('judul',TRUE),
 		'tgl_upload' => $this->input->post('tgl_upload',TRUE),
 		'id_kategori' => $this->session->userdata('area'),
-		'nama_file' => $this->input->post('nama_file',TRUE),
+		// 'nama_file' => $this->input->post('nama_file',TRUE),
+        'nama_file'     => $pemenuhan['file_name'],
 	    );
 
             $this->Pemenuhan_model->insert($data);
@@ -132,6 +132,7 @@ class Pemenuhan extends CI_Controller
     public function update_action() 
     {
         $this->_rules();
+        $pemenuhan = $this->upload_pemenuhan();
 
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_pemenuhan', TRUE));
@@ -141,7 +142,8 @@ class Pemenuhan extends CI_Controller
 		'judul' => $this->input->post('judul',TRUE),
 		'tgl_upload' => $this->input->post('tgl_upload',TRUE),
 		'id_kategori' => $this->input->post('id_kategori',TRUE),
-		'nama_file' => $this->input->post('nama_file',TRUE),
+		// 'nama_file' => $this->input->post('nama_file',TRUE),
+        'nama_file'     => $pemenuhan['file_name'],
 	    );
 
             $this->Pemenuhan_model->update($this->input->post('id_pemenuhan', TRUE), $data);
@@ -170,7 +172,7 @@ class Pemenuhan extends CI_Controller
 	$this->form_validation->set_rules('judul', 'judul', 'trim|required');
 	$this->form_validation->set_rules('tgl_upload', 'tgl upload', 'trim|required');
 	$this->form_validation->set_rules('id_kategori', 'id kategori', 'trim|required');
-	$this->form_validation->set_rules('nama_file', 'nama file', 'trim|required');
+    // $this->form_validation->set_rules('nama_file', 'nama file', 'trim|required');
 
 	$this->form_validation->set_rules('id_pemenuhan', 'id_pemenuhan', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
@@ -235,6 +237,18 @@ class Pemenuhan extends CI_Controller
         
         $this->load->view('pemenuhan/tbl_pemenuhan_doc',$data);
     }
+
+    function upload_pemenuhan(){
+        $config['upload_path']          = './assets/file_zipemenuhan';
+        $config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx|zip|rar';
+        $config['max_size']             = 2000;
+        //$config['max_width']            = 1024;
+        //$config['max_height']           = 768;
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('nama_file');
+        return $this->upload->data();
+    }
+
 
 }
 

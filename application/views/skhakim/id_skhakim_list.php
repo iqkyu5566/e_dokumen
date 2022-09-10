@@ -69,6 +69,7 @@
 			<td><?php echo $skhakim->perihal ?></td>
 			<td><?php echo $skhakim->jenis_sk ?></td>
 			<td><?php echo $skhakim->keterangan ?></td>
+            <td><?php echo anchor(site_url('assets/file_skhakimkhusus/'.$skhakim->nama_file),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm", target="_blank"');  ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('skhakim/read/'.$skhakim->id_skhakim),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 

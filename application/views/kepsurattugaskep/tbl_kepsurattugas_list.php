@@ -57,6 +57,7 @@
 		<th>Perihal</th>
 		<th>Nama</th>
 		<th>Keterangan</th>
+        <th>Nama File</th>
 		<th>Action</th>
             </tr><?php
             foreach ($kepsurattugaskep_data as $kepsurattugaskep)
@@ -69,6 +70,7 @@
 			<td><?php echo $kepsurattugaskep->perihal ?></td>
 			<td><?php echo $kepsurattugaskep->nama ?></td>
 			<td><?php echo $kepsurattugaskep->keterangan ?></td>
+            <td><?php echo anchor(site_url('assets/kep_surattugas/'.$kepsurattugaskep->nama_file),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm", target="_blank"'); ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('kepsurattugaskep/read/'.$kepsurattugaskep->id_surattugas),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 

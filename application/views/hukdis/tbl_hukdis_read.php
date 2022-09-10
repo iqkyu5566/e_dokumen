@@ -49,6 +49,12 @@
 				<td>Keterangan</td>
 				<td><?php echo $keterangan; ?></td>
 			</tr>
+
+			<tr>
+				<td>Nama File</td>
+				<td><?php echo anchor(site_url('assets/file_hukdis/'.$nama_file),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm", target="_blank"');  ?></td>
+			</tr>
+	
 	
 			<tr>
 				<td></td>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Agu 2022 pada 01.59
+-- Waktu pembuatan: 27 Agu 2022 pada 13.46
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.28
 
@@ -66,7 +66,8 @@ CREATE TABLE `id_zikualitaspelayanan` (
 --
 
 INSERT INTO `id_zikualitaspelayanan` (`id_kualitaspelayanan`, `no_dokumen`, `judul`, `tgl_upload`, `id_kategori`, `nama_file`) VALUES
-(1, 'B2A', 'A. Nilai Persepsi Kualitas Pelayanan (Survei Eksternal)', '2022-07-26', 1, 'ZIHASIL2A.pdf');
+(1, 'B2A', 'A. Nilai Persepsi Kualitas Pelayanan (Survei Eksternal)', '2022-07-26', 1, 'ZIHASIL2A.pdf'),
+(2, 'tes', 'asdgfdsag', '2022-08-26', 2, '269_KMA_SK_XII_2018.pdf');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,8 @@ CREATE TABLE `tbl_akreditasi` (
 --
 
 INSERT INTO `tbl_akreditasi` (`id_akreditasi`, `no_dokumen`, `judul`, `tgl_upload`, `id_kategori`, `nama_file`) VALUES
-(1, 'IA', 'Akreditasi1', '2022-07-26', 1, 'akreditasi1.pdf');
+(1, 'IA', 'Akreditasi1', '2022-07-26', 1, 'akreditasi1.pdf'),
+(2, 'tes', 'sadfdsaf', '2022-08-26', 1, 'Surat Pengantar Lomba Hymne-Mars Peradilan PT SULTRA.pdf');
 
 -- --------------------------------------------------------
 
@@ -121,16 +123,18 @@ CREATE TABLE `tbl_cuti` (
   `jenis_cuti` text NOT NULL,
   `lama_cuti` text NOT NULL,
   `tgl_cuti` date NOT NULL,
-  `keterangan` text NOT NULL
+  `keterangan` text NOT NULL,
+  `nama_file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tbl_cuti`
 --
 
-INSERT INTO `tbl_cuti` (`id_cuti`, `nama`, `nomor_surat`, `tgl_surat`, `jenis_cuti`, `lama_cuti`, `tgl_cuti`, `keterangan`) VALUES
-(1, 'wa ode tika', 'w23/u2.23./sdfsd/sdf/213', '2022-07-27', 'Izin', '3 Hari', '2022-07-30', 'Izin'),
-(2, 'wa ode nanda', 'w23/u2.23./sdfsd/sdf/21346', '2022-07-27', 'tahunan', '5 hari', '2022-07-27', 'tahunan');
+INSERT INTO `tbl_cuti` (`id_cuti`, `nama`, `nomor_surat`, `tgl_surat`, `jenis_cuti`, `lama_cuti`, `tgl_cuti`, `keterangan`, `nama_file`) VALUES
+(1, 'wa ode tika', 'w23/u2.23./sdfsd/sdf/213', '2022-07-27', 'Izin', '3 Hari', '2022-07-30', 'Izin', ''),
+(2, 'wa ode nanda', 'w23/u2.23./sdfsd/sdf/21346', '2022-07-27', 'tahunan', '5 hari', '2022-07-27', 'tahunan', ''),
+(3, 'tes', '12312312', '2022-08-26', 'asdfdasf', 'asfsad', '2022-08-26', 'asdfasd', 'Surat Pengantar Lomba Hymne-Mars Peradilan PT SULTRA.pdf');
 
 -- --------------------------------------------------------
 
@@ -255,7 +259,7 @@ CREATE TABLE `tbl_kepskhakim` (
 INSERT INTO `tbl_kepskhakim` (`id_skketua`, `nomor_sk`, `tanggal_sk`, `perihal`, `keterangan`, `nama_file`) VALUES
 (1, 'w23.213/231/fsg/2022', '2022-07-26', 'tes', 'tes', ''),
 (2, 'rtes', '2022-08-25', '123121232', '123123', 'kantor.jpg'),
-(3, '123', '2022-08-25', '12312', '1231232', 'Permintaan Perpanjangan penahanan an. ANDRI Alias LA DABI_0001.pdf');
+(3, '123', '2022-08-25', '12312 tes tambah', '1231232', '269_KMA_SK_XII_2018.pdf');
 
 -- --------------------------------------------------------
 
@@ -269,15 +273,16 @@ CREATE TABLE `tbl_kepsurattugas` (
   `tanggal_st` date NOT NULL,
   `perihal` text NOT NULL,
   `nama` text NOT NULL,
-  `keterangan` text NOT NULL
+  `keterangan` text NOT NULL,
+  `nama_file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tbl_kepsurattugas`
 --
 
-INSERT INTO `tbl_kepsurattugas` (`id_surattugas`, `nomor_st`, `tanggal_st`, `perihal`, `nama`, `keterangan`) VALUES
-(1, 'w23.1234/213432/2022', '2022-07-26', 'tes', 'tes', '-');
+INSERT INTO `tbl_kepsurattugas` (`id_surattugas`, `nomor_st`, `tanggal_st`, `perihal`, `nama`, `keterangan`, `nama_file`) VALUES
+(1, 'w23.1234/213432/2022', '2022-07-26', 'tes', 'tes', '-dsfasdcff', 'tbl_user.xls');
 
 -- --------------------------------------------------------
 
@@ -392,7 +397,8 @@ CREATE TABLE `tbl_pengawasan` (
 --
 
 INSERT INTO `tbl_pengawasan` (`id_pengawasan`, `no_dokumen`, `satker`, `tim`, `tgl_upload`, `nama_file`) VALUES
-(1, 'IA', 'Pengadilan Negeri Kendari', 'A<br>\r\nB<br>\r\nC', '2022-07-26', 'Pengawasan1.pdf');
+(1, 'IA', 'Pengadilan Negeri Kendari', 'A<br>\r\nB<br>\r\nC', '2022-07-26', 'Pengawasan1.pdf'),
+(2, 'tes', 'asdfsd', 'a\r\nb\r\nb\r\nd', '2022-08-26', 'LHP PN KENDARI 2022.docx');
 
 -- --------------------------------------------------------
 
@@ -415,7 +421,8 @@ CREATE TABLE `tbl_reformdua` (
 
 INSERT INTO `tbl_reformdua` (`id_reformdua`, `no_dokumen`, `judul`, `tgl_upload`, `id_kategori`, `nama_file`) VALUES
 (1, '2I', 'Telah disusun peta proses bisnis dengan adanya penyederhanaan jabatan', '2022-07-19', 2, 'reformdua.pdf'),
-(2, '2IA', 'Peta Proses Bisnis Mempengaruhi Penyederhanaan Jabatan	 	 	 	 	\r\n\r\n-Telah disusun peta proses bisnis dengan adanya penyederhanaan jabatan', '2022-07-25', 2, 'reform1.pdf');
+(2, '2IA', 'Peta Proses Bisnis Mempengaruhi Penyederhanaan Jabatan	 	 	 	 	\r\n\r\n-Telah disusun peta proses bisnis dengan adanya penyederhanaan jabatan', '2022-07-25', 2, 'reform1.pdf'),
+(3, 'tes', 'sdafsd', '2022-08-26', 1, '269_KMA_SK_XII_2018.pdf');
 
 -- --------------------------------------------------------
 
@@ -506,7 +513,8 @@ CREATE TABLE `tbl_zibirokrasi` (
 
 INSERT INTO `tbl_zibirokrasi` (`id_zibirokrasi`, `no_dokumen`, `judul`, `tgl_upload`, `id_kategori`, `nama_file`) VALUES
 (1, 'B1A', 'a.Nilai Survey Persepsi Korupsi (Survei Eksternal)', '2022-07-26', 1, 'ZIHasilA.pdf'),
-(2, 'B1B', 'b.Capaian Kinerja Lebih Baik dari pada Capaian Kinerja Sebelumnya', '2022-07-26', 1, 'ZIhasilB.pdf');
+(2, 'B1B', 'b.Capaian Kinerja Lebih Baik dari pada Capaian Kinerja Sebelumnya', '2022-07-26', 1, 'ZIhasilB.pdf'),
+(3, 'tes 123', 'dfgdsafsadfdsafdas', '2022-08-26', 1, 'tbl_user.xls');
 
 --
 -- Indexes for dumped tables
@@ -652,13 +660,13 @@ ALTER TABLE `id_skhakim`
 -- AUTO_INCREMENT untuk tabel `id_zikualitaspelayanan`
 --
 ALTER TABLE `id_zikualitaspelayanan`
-  MODIFY `id_kualitaspelayanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kualitaspelayanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_akreditasi`
 --
 ALTER TABLE `tbl_akreditasi`
-  MODIFY `id_akreditasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_akreditasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_baperjakat`
@@ -670,7 +678,7 @@ ALTER TABLE `tbl_baperjakat`
 -- AUTO_INCREMENT untuk tabel `tbl_cuti`
 --
 ALTER TABLE `tbl_cuti`
-  MODIFY `id_cuti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_cuti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_hak_akses`
@@ -736,13 +744,13 @@ ALTER TABLE `tbl_pemenuhan`
 -- AUTO_INCREMENT untuk tabel `tbl_pengawasan`
 --
 ALTER TABLE `tbl_pengawasan`
-  MODIFY `id_pengawasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pengawasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_reformdua`
 --
 ALTER TABLE `tbl_reformdua`
-  MODIFY `id_reformdua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_reformdua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_setting`
@@ -766,7 +774,7 @@ ALTER TABLE `tbl_user_level`
 -- AUTO_INCREMENT untuk tabel `tbl_zibirokrasi`
 --
 ALTER TABLE `tbl_zibirokrasi`
-  MODIFY `id_zibirokrasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_zibirokrasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

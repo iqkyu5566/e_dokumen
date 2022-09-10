@@ -75,6 +75,7 @@
 			<td><?php echo $hukdis->tmt_mulai ?></td>
 			<td><?php echo $hukdis->tmt_akhir ?></td>
 			<td><?php echo $hukdis->keterangan ?></td>
+            <td><?php echo anchor(site_url('assets/file_hukdis/'.$hukdis->nama_file),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm", target="_blank"');  ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('hukdis/read/'.$hukdis->id_hukdis),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 

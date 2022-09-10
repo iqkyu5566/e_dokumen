@@ -69,6 +69,7 @@
 			<td><?php echo $pengawasan->tim ?></td>
 			<td><?php echo $pengawasan->tgl_upload ?></td>
 			<td><?php echo $pengawasan->nama_file ?></td>
+            <td><?php echo anchor(site_url('assets/file_pengawasan/'.$pengawasan->nama_file),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm", target="_blank"');  ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('pengawasan/read/'.$pengawasan->id_pengawasan),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 

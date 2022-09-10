@@ -55,6 +55,7 @@ class Kepsurattugaskep extends CI_Controller
 		'tanggal_st' => $row->tanggal_st,
 		'perihal' => $row->perihal,
 		'nama' => $row->nama,
+        'nama_file' => $row->nama_file,
 		'keterangan' => $row->keterangan,
 	    );
             $this->template->load('template','kepsurattugaskep/tbl_kepsurattugas_read', $data);
@@ -74,6 +75,7 @@ class Kepsurattugaskep extends CI_Controller
 	    'tanggal_st' => set_value('tanggal_st'),
 	    'perihal' => set_value('perihal'),
 	    'nama' => set_value('nama'),
+        'nama_file' => set_value('nama_file'),
 	    'keterangan' => set_value('keterangan'),
 	);
         $this->template->load('template','kepsurattugaskep/tbl_kepsurattugas_form', $data);
@@ -82,7 +84,7 @@ class Kepsurattugaskep extends CI_Controller
     public function create_action() 
     {
         $this->_rules();
-
+        $kepsurattugas = $this->upload_surattugas();
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
@@ -91,6 +93,8 @@ class Kepsurattugaskep extends CI_Controller
 		'tanggal_st' => $this->input->post('tanggal_st',TRUE),
 		'perihal' => $this->input->post('perihal',TRUE),
 		'nama' => $this->input->post('nama',TRUE),
+        'nama_file'     => $kepsurattugas['file_name'],
+        // 'nama_file' => $this->input->post('nama_file',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
 	    );
 
@@ -113,6 +117,7 @@ class Kepsurattugaskep extends CI_Controller
 		'tanggal_st' => set_value('tanggal_st', $row->tanggal_st),
 		'perihal' => set_value('perihal', $row->perihal),
 		'nama' => set_value('nama', $row->nama),
+        'nama_file' => set_value('nama_file', $row->nama_file),
 		'keterangan' => set_value('keterangan', $row->keterangan),
 	    );
             $this->template->load('template','kepsurattugaskep/tbl_kepsurattugas_form', $data);
@@ -125,7 +130,7 @@ class Kepsurattugaskep extends CI_Controller
     public function update_action() 
     {
         $this->_rules();
-
+        $kepsurattugas = $this->upload_surattugas();
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_surattugas', TRUE));
         } else {
@@ -134,7 +139,9 @@ class Kepsurattugaskep extends CI_Controller
 		'tanggal_st' => $this->input->post('tanggal_st',TRUE),
 		'perihal' => $this->input->post('perihal',TRUE),
 		'nama' => $this->input->post('nama',TRUE),
+        'nama_file' => $this->input->post('nama_file',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
+        'nama_file'     => $kepsurattugas['file_name'],
 	    );
 
             $this->Kepsurattugaskep_model->update($this->input->post('id_surattugas', TRUE), $data);
@@ -163,6 +170,7 @@ class Kepsurattugaskep extends CI_Controller
 	$this->form_validation->set_rules('tanggal_st', 'tanggal st', 'trim|required');
 	$this->form_validation->set_rules('perihal', 'perihal', 'trim|required');
 	$this->form_validation->set_rules('nama', 'nama', 'trim|required');
+    // $this->form_validation->set_rules('nama_file', 'nama file', 'trim|required');
 	$this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
 
 	$this->form_validation->set_rules('id_surattugas', 'id_surattugas', 'trim');
@@ -195,6 +203,7 @@ class Kepsurattugaskep extends CI_Controller
 	xlsWriteLabel($tablehead, $kolomhead++, "Tanggal St");
 	xlsWriteLabel($tablehead, $kolomhead++, "Perihal");
 	xlsWriteLabel($tablehead, $kolomhead++, "Nama");
+    xlsWriteLabel($tablehead, $kolomhead++, "Nama File");
 	xlsWriteLabel($tablehead, $kolomhead++, "Keterangan");
 
 	foreach ($this->Kepsurattugaskep_model->get_all() as $data) {
@@ -206,6 +215,7 @@ class Kepsurattugaskep extends CI_Controller
 	    xlsWriteLabel($tablebody, $kolombody++, $data->tanggal_st);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->perihal);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->nama);
+        xlsWriteLabel($tablebody, $kolombody++, $data->nama_file);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->keterangan);
 
 	    $tablebody++;
@@ -227,6 +237,17 @@ class Kepsurattugaskep extends CI_Controller
         );
         
         $this->load->view('kepsurattugaskep/tbl_kepsurattugas_doc',$data);
+    }
+
+    function upload_surattugas(){
+        $config['upload_path']          = './assets/kep_surattugas';
+        $config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx|zip|rar';
+        $config['max_size']             = 2000;
+        //$config['max_width']            = 1024;
+        //$config['max_height']           = 768;
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('nama_file');
+        return $this->upload->data();
     }
 
 }

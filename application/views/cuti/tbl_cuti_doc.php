@@ -26,6 +26,7 @@
 		<th>Jenis Cuti</th>
 		<th>Lama Cuti</th>
 		<th>Tgl Cuti</th>
+        <th>Nama File</th>
 		<th>Keterangan</th>
 		
             </tr><?php
@@ -40,6 +41,7 @@
 		      <td><?php echo $cuti->jenis_cuti ?></td>
 		      <td><?php echo $cuti->lama_cuti ?></td>
 		      <td><?php echo $cuti->tgl_cuti ?></td>
+              <td><?php echo $cuti->nama_file ?></td>	
 		      <td><?php echo $cuti->keterangan ?></td>	
                 </tr>
                 <?php

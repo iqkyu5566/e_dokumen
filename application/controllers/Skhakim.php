@@ -56,6 +56,7 @@ class Skhakim extends CI_Controller
 		'perihal' => $row->perihal,
 		'jenis_sk' => $row->jenis_sk,
 		'keterangan' => $row->keterangan,
+        'nama_file' => $row->nama_file,
 	    );
             $this->template->load('template','skhakim/id_skhakim_read', $data);
         } else {
@@ -82,7 +83,11 @@ class Skhakim extends CI_Controller
     public function create_action() 
     {
         $this->_rules();
-
+        $skhakimkhusus = $this->upload_fileskhakimkhusus();
+        // echo "<pre>";
+        // print_r ($kepskhakim);
+        // die;
+        // echo "</pre>";
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
@@ -92,6 +97,7 @@ class Skhakim extends CI_Controller
 		'perihal' => $this->input->post('perihal',TRUE),
 		'jenis_sk' => $this->input->post('jenis_sk',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
+        'nama_file'     => $skhakimkhusus['file_name'],
 	    );
 
             $this->Skhakim_model->insert($data);
@@ -103,7 +109,7 @@ class Skhakim extends CI_Controller
     public function update($id) 
     {
         $row = $this->Skhakim_model->get_by_id($id);
-
+        
         if ($row) {
             $data = array(
                 'button' => 'Update',
@@ -125,6 +131,7 @@ class Skhakim extends CI_Controller
     public function update_action() 
     {
         $this->_rules();
+        $skhakimkhusus = $this->upload_fileskhakimkhusus();
 
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_skhakim', TRUE));
@@ -135,6 +142,7 @@ class Skhakim extends CI_Controller
 		'perihal' => $this->input->post('perihal',TRUE),
 		'jenis_sk' => $this->input->post('jenis_sk',TRUE),
 		'keterangan' => $this->input->post('keterangan',TRUE),
+        'nama_file'     => $skhakimkhusus['file_name'],
 	    );
 
             $this->Skhakim_model->update($this->input->post('id_skhakim', TRUE), $data);
@@ -227,6 +235,17 @@ class Skhakim extends CI_Controller
         );
         
         $this->load->view('skhakim/id_skhakim_doc',$data);
+    }
+
+    function upload_fileskhakimkhusus(){
+        $config['upload_path']          = './assets/file_skhakimkhusus';
+        $config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx|zip|rar';
+        $config['max_size']             = 2000;
+        //$config['max_width']            = 1024;
+        //$config['max_height']           = 768;
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('nama_file');
+        return $this->upload->data();
     }
 
 }

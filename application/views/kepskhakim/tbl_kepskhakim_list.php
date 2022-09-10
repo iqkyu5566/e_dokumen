@@ -68,7 +68,7 @@
 			<td><?php echo $kepskhakim->tanggal_sk ?></td>
 			<td><?php echo $kepskhakim->perihal ?></td>
 			<td><?php echo $kepskhakim->keterangan ?></td>
-            <td><?php echo $kepskhakim->nama_file ?></td>
+            <td><?php echo anchor(site_url('assets/file_skhakim/'.$kepskhakim->nama_file),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm", target="_blank"');  ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('kepskhakim/read/'.$kepskhakim->id_skketua),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 

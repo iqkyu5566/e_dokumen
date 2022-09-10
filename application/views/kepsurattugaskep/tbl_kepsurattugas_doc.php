@@ -25,6 +25,7 @@
 		<th>Perihal</th>
 		<th>Nama</th>
 		<th>Keterangan</th>
+        <th>Nama File</th>
 		
             </tr><?php
             foreach ($kepsurattugaskep_data as $kepsurattugaskep)
@@ -36,7 +37,8 @@
 		      <td><?php echo $kepsurattugaskep->tanggal_st ?></td>
 		      <td><?php echo $kepsurattugaskep->perihal ?></td>
 		      <td><?php echo $kepsurattugaskep->nama ?></td>
-		      <td><?php echo $kepsurattugaskep->keterangan ?></td>	
+		      <td><?php echo $kepsurattugaskep->keterangan ?></td>
+              <td><?php echo $pemenuhan->nama_file ?></td>	
                 </tr>
                 <?php
             }
